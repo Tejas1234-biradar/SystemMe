@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap');
+* {
+  font-family: "exo 2";
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+  background-color: black;
+}
+
+#root {
+  max-width: 1280px;
+  text-align: center;
+}
+
+/* Night Sky Background */
+.blue-flame {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at 40% 80%, #14121f 20%, #0a0024 60%, #090000 100%);
+  overflow: hidden;
+}
+
+/* Nebula Glow Effect */
+.blue-flame::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(111, 0, 255, 0.747) 0%, rgba(10, 15, 30, 0.1) 60%);
+  opacity: 0.3;
+  filter: blur(80px);
+  animation: blueFlame 3s infinite ease-in-out;
+}
+
+@keyframes blueFlame {
+  0% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.1); }
+  100% { opacity: 0.2; transform: scale(1); }
+}
+
+/* Floating Particles (Stars) */
+.particle {
+  position: absolute;
+  background-color: rgba(170, 183, 255, 0.8);
+  border-radius: 50%;
+  filter: blur(1.5px);
+  opacity: 0.8;
+}
+
+/* Floating Embers */
+.ember {
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(255, 120, 50, 0.9);
+  filter: blur(1.5px);
+  opacity: 0.9;
+}
+
+/* Center Content (Text & Buttons) */
+.center-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+/* Title Text Glow */
+.title  {
+  color: white;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+  font-size: 2.5rem;
+  font-weight: bold;
+  font-family: "orbitron";
+}
+
+/* Buttons */
+button {
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top:12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+/* Signup Form Styling */
+.signup-container {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.audio-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 5px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.audio-button img {
+  width: 32px;
+  height: 32px;
+  filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.6));
+}
+
+.audio-button:hover {
+  opacity: 0.8;
+}
+
+
+.signup-container input {
+  width: 80%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+
+.submit-btn {
+  background-color: #22c55e;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  transform: scale(1.05);
+}
+
+
+.start-btn {
+  background-color: #2563eb;
+  color: white;
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.8);
+}
+
+.audio-btn {
+  background-color: #dc2626;
+  color: white;
+  box-shadow: 0 0 10px rgba(220, 38, 38, 0.8);
+}

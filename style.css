@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400&family=Montserrat:wght@200&display=swap');
+
+/* General Reset and Body Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Oswald', sans-serif, 'Montserrat', sans-serif;
+    background-color: #EFF0D1; /* Light background */
+    color: #262730; /* Dark text */
+    line-height: 1.6;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header Styles */
+header {
+    height: 85px;
+    background-color: rgb(119, 186, 153);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #EFF0D1;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #EFF0D1;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease;
+    border-radius: 0.5rem;
+}
+
+nav ul li a:hover {
+    background-color: #D7C0D0;
+}
+
+/* Main Content */
+main {
+    padding: 2em 1.5em;
+    z-index: 1;
+    position: relative;
+}
+
+.intro h1 {
+    font-size: 2.5em;
+    color: #262730;
+}
+
+.intro p {
+    font-size: 1.2em;
+    color: #666;
+}
+
+/* Feature Box Layout */
+.features .col {
+    display: flex;
+    justify-content: center;
+}
+
+.feature-box {
+    background-color: rgba(215, 192, 208, 0.8); /* Opaque pinkish feature boxes */
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.feature-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.feature-box h2 {
+    height: 75px;
+    font-size: 1.8em;
+    color: #262730;
+    background-color: #EFF0D1;
+    padding: 0.5em;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.feature-box p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #77BA99;
+    width: 100%;
+    border-top: 1px solid #ccc;
+}
+
+footer p {
+    margin: 0;
+    color: #EFF0D1;
+}

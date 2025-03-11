@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400&family=Montserrat:wght@300&display=swap');
+
+:root {
+    --primary-bg: #EFF0D1;
+    --secondary-bg: #D7C0D0;
+    --task-bg: #fff;
+    --completed-task-color: #77BA99;
+    --button-bg: #77BA99;
+    --button-hover-bg: #424D48;
+    --delete-bg: #D33F49;
+    --delete-hover-bg: #FF1744;
+    --floating-bg: #1e0ce9;
+    --header-footer-bg: #77BA99;
+    --header-footer-text: #EFF0D1;
+    --text-color: #262730;
+}
+
+body {
+    font-family: 'Oswald', sans-serif, 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark {
+    --primary-bg: #0a0f1b;
+    --secondary-bg: #121829;
+    --task-bg: #1b2436;
+    --completed-task-color: #375fc7;
+    --button-bg: #2a4d9e;
+    --button-hover-bg: #375fc7;
+    --delete-bg: #ff1744;
+    --delete-hover-bg: #ff4567;
+    --floating-bg: #3d88ff;
+    --header-footer-bg: #000000;
+    --header-footer-text: #a6d6f5;
+    --text-color: #a6d6f5;
+}
+
+header {
+    background-color: var(--header-footer-bg);
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--header-footer-text);
+    padding-left: 3rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease;
+    border-radius: 0.5rem;
+}
+
+nav ul li a:hover {
+    background-color: var(--button-hover-bg);
+}
+
+main {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    position: relative;
+    left: -40px;
+    margin-top: 20px;
+}
+
+.container {
+    background-color: var(--secondary-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container:hover {
+    transform: scale(1.05);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#todo-list li,
+#upcoming-task-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    background-color: var(--task-bg);
+    border-radius: 4px;
+    color: var(--text-color);
+    transition: transform 0.3s ease;
+}
+
+#todo-list li:hover,
+#upcoming-task-list li:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+#todo-list li.completed,
+#upcoming-task-list li.completed {
+    text-decoration: line-through;
+    color: var(--completed-task-color);
+}
+
+.form-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+input[type="text"],
+input[type="date"] {
+    flex-grow: 1;
+    padding: 0.5rem;
+    background-color: var(--task-bg);
+    border: none;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    background-color: var(--button-bg);
+    color: var(--header-footer-text);
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--button-hover-bg);
+}
+
+.delete-button {
+    background-color: var(--delete-bg);
+    color: var(--text-color);
+    border: none;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: var(--delete-hover-bg);
+}
+
+input[type="checkbox"] {
+    margin-right: 1rem;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--header-footer-bg);
+    width: 100%;
+    border-top: 1px solid #ccc;
+}
+
+footer p {
+    margin: 0;
+    color: var(--header-footer-text);
+}
+
+.floating-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.floating-button {
+    background-color: var(--floating-bg);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Oswald', sans-serif;
+}
+
+.floating-button:hover {
+    background-color: var(--delete-bg);
+    transform: scale(1.1);
+    transition: 0.3s;
+}

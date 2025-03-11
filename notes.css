@@ -1,0 +1,509 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Oswald:wght@400&display=swap');
+
+
+:root {
+    --primary-bg: #ead9e5;
+    --secondary-bg: #EFF0D1;
+    --note-bg: #f5f5d6;
+    --button-bg: #796ef0;
+    --button-hover-bg: #D7C0D0;
+    --text-color: #262730;
+    --delete-bg: red;
+    --delete-hover-bg: darkred;
+    --floating-bg: #1e0ce9;
+    --header-footer-bg: #77BA99;
+    --header-footer-text: #EFF0D1;
+}
+
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark {
+    --primary-bg: #0a0f1b; /* Deep black with a slight blue tint */
+    --secondary-bg: #121829; /* Dark slate blue for secondary sections */
+    --note-bg: #1b2436; /* Muted dark blue-gray for notes */
+    --button-bg: #2a4d9e; /* Neon electric blue for buttons */
+    --button-hover-bg: #375fc7; /* Brighter neon blue for hover effects */
+    --text-color: #a6d6f5; /* Cool cyan text */
+    --delete-bg: #ff1744; /* Bright neon red for delete buttons */
+    --delete-hover-bg: #ff4567; /* Vibrant glowing red for hover */
+    --floating-bg: #3d88ff; /* Neon blue for floating button */
+    --header-footer-bg: #000000; /* Pure black for header and footer */
+    --header-footer-text: #a6d6f5; /* Cool cyan for text */
+    --title-bg: #24344d; /* Slightly brighter muted blue-gray for title */
+    --title-border: #375fc7; /* Bright blue for title border */
+    --input-bg: #1b2436; /* Muted dark blue-gray for input fields */
+    --input-border: #2a4d9e; /* Subtle blue for input borders */
+    --label-color: #8395a7; /* Soft grayish blue for labels */
+    --textarea-bg: #1b2436; /* Same as input background for consistency */
+    --textarea-border: #2a4d9e; /* Subtle blue for borders */
+}
+
+label {
+    color: var(--label-color);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+input[type="text"] {
+    background-color: var(--title-bg);
+    color: var(--text-color);
+    border: 1px solid var(--title-border);
+    padding: 0.5rem;
+    border-radius: 4px;
+    width: 100%;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: var(--button-hover-bg);
+    outline: none;
+    box-shadow: 0 0 4px var(--button-hover-bg);
+}
+
+textarea {
+    background-color: var(--textarea-bg);
+    color: var(--text-color);
+    border: 1px solid white;
+    padding: 0.5rem;
+    border-radius: 4px;
+    width: 100%;
+    resize: vertical;
+    min-height: 100px;
+    transition: border-color 0.3s ease;
+}
+
+textarea:focus {
+    border-color: var(--button-hover-bg);
+    outline: none;
+}
+
+
+
+header {
+    background-color: var(--header-footer-bg);
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+/* Styling for the note list item */
+.note-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Button group container to hold delete and download buttons next to each other */
+.btn-group {
+    display: flex;
+    gap: 10px;  /* Adds space between the buttons */
+}
+
+/* Styling for delete button */
+.delete-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+/* Styling for download button */
+.download-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+/* Optional: Add hover effect for buttons */
+.delete-btn:hover, .download-btn:hover {
+    opacity: 0.7;
+}
+
+/* Additional styling for buttons when clicked */
+.delete-btn:active, .download-btn:active {
+    transform: scale(0.95);
+}
+
+/* Optional: Make buttons larger if needed */
+.delete-btn svg, .download-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Align buttons in the right corner */
+.note-item .btn-group {
+    margin-left: auto; /* Pushes buttons to the right */
+}
+
+/* Optional: Add some padding to the list container */
+#notes-list {
+    padding: 10px;
+    max-width: 600px;
+    margin: auto;
+}
+
+
+header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--header-footer-text);
+    padding-left: 3rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--header-footer-text);
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 0.5rem;
+}
+
+nav ul li a:hover {
+    background-color: var(--button-hover-bg);
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--header-footer-bg);
+    width: 100%;
+    border-top: 1px solid #ccc;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+footer p {
+    margin: 0;
+    color: var(--header-footer-text);
+}
+
+/* Other styles remain unchanged */
+
+
+/* Dark mode styles for glowing effects */
+body.dark header, body.dark footer {
+    box-shadow: 0 0 15px var(--border-glow);
+}
+
+body.dark header .logo, body.dark footer p {
+    text-shadow: 0 0 10px var(--border-glow);
+}
+
+/* Add glowing effects for a futuristic touch */
+body.dark #app {
+    box-shadow: 0 0 20px var(--border-glow);
+}
+
+body.dark #sidebar {
+    border: 2px solid var(--border-glow);
+    box-shadow: 0 0 15px var(--border-glow);
+}
+
+body.dark #newPage {
+    box-shadow: 0 0 10px var(--border-glow);
+}
+
+body.dark #newPage:hover {
+    box-shadow: 0 0 15px var(--button-hover-bg);
+}
+
+body.dark #notes-list li {
+    background-color: var(--secondary-bg);
+    color: var(--text-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 10px var(--border-glow);
+}
+
+body.dark .delete-btn {
+    box-shadow: 0 0 10px rgba(255, 23, 68, 0.5);
+}
+
+body.dark .delete-btn:hover {
+    box-shadow: 0 0 15px rgba(255, 69, 103, 0.8);
+}
+
+body.dark .floating-button {
+    box-shadow: 0 0 20px var(--floating-bg);
+}
+
+body.dark .floating-button:hover {
+    box-shadow: 0 0 25px var(--button-hover-bg);
+}
+
+/* Subtle text glow */
+body.dark #projectName {
+    text-shadow: 0 0 10px var(--border-glow);
+}
+
+body.dark .note-title {
+    text-shadow: 0 0 8px var(--border-glow);
+}
+
+/* Add gradient borders or details */
+body.dark textarea {
+    border: 2px solid var(--border-glow);
+}
+
+body.dark #search {
+    border: 1px solid var(--border-glow);
+    box-shadow: 0 0 10px var(--border-glow);
+}
+
+body.dark #download {
+    box-shadow: 0 0 10px var(--border-glow);
+}
+
+#app-wrapper {
+    width: 90%;
+    height: 90%;
+}
+
+#app {
+    display: flex;
+    height: 100%;
+    gap: 12px;
+    background-color: var(--primary-bg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: background-color 0.3s;
+    position: relative;
+    left: 5%;
+}
+
+#sidebar {
+    width: 30%;
+    background-color: var(--secondary-bg);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 2px solid var(--button-hover-bg);
+    border-radius: 2%;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#projectName {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--text-color);
+    font-family: 'Oswald', sans-serif;
+    transition: color 0.3s;
+}
+
+#newPage {
+    background-color: var(--button-bg);
+    color: white;
+    padding: 10px;
+    width: 20px;
+    border-radius: 80%;
+    cursor: pointer;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Oswald', sans-serif;
+    transition: background-color 0.3s;
+}
+
+#newPage:hover {
+    background-color: var(--button-hover-bg);
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+.download-btn{
+    background-color:   var(--text-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    margin-left: 10px;
+    transition: transform 0.3s, background-color 0.3s;   
+}
+
+#notes-list li {
+    padding: 10px;
+    background-color: white;
+    margin-bottom: 10px;
+    width: 20vw;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: 'Montserrat', sans-serif;
+    display: flex
+;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+body.dark #notes-list li {
+    background-color: var(--secondary-bg);
+    color: var(--text-color);
+}
+
+.delete-btn {
+    background-color: var(--delete-bg);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    margin-left: 10px;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.delete-btn:hover {
+    background-color: var(--delete-hover-bg);
+    transform: scale(1.2);
+}
+
+.delete-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: white;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#search {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#download {
+    background-color: var(--button-bg);
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    transition: background-color 0.3s;
+}
+
+#download:hover {
+    background-color: var(--button-hover-bg);
+}
+
+#note {
+    width: 70%;
+    padding: 20px;
+    border: 1px;
+    background-color: var(--note-bg);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 2%;
+    transition: background-color 0.3s;
+}
+
+textarea {
+    width: 100%;
+    height: 100%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    resize: none;
+    transition: border-color 0.3s;
+}
+
+.note-title {
+    font-size: 25px;
+    font-family: 'Oswald', sans-serif;
+    color: var(--text-color);
+    height: 10%;
+    border: none;
+    transition: color 0.3s;
+}
+
+.floating-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.floating-button {
+    background-color: var(--floating-bg);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Oswald', sans-serif;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.floating-button:hover {
+    background-color: var(--button-hover-bg);
+    transform: scale(1.1);
+}
+
+/* For responsiveness */
+@media (max-width: 768px) {
+    #app {
+        flex-direction: column;
+    }
+
+    #sidebar {
+        width: 100%;
+    }
+
+    #note {
+        width: 100%;
+    }
+}

@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400&family=Montserrat:wght@300&display=swap');
+
+:root {
+    --primary-bg: #EFF0D1;
+    --secondary-bg: #D7C0D0;
+    --task-bg: #fff;
+    --completed-task-color: #77BA99;
+    --button-bg: #77BA99;
+    --button-hover-bg: #424D48;
+    --delete-bg: #D33F49;
+    --delete-hover-bg: #FF1744;
+    --floating-bg: #1e0ce9;
+    --header-footer-bg: #77BA99;
+    --header-footer-text: #EFF0D1;
+    --text-color: #262730;
+}
+
+body {
+    font-family: 'Oswald', sans-serif, 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark {
+    --primary-bg: #0a0f1b;
+    --secondary-bg: #121829;
+    --task-bg: #1b2436;
+    --completed-task-color: #375fc7;
+    --button-bg: #2a4d9e;
+    --button-hover-bg: #375fc7;
+    --delete-bg: #ff1744;
+    --delete-hover-bg: #ff4567;
+    --floating-bg: #3d88ff;
+    --header-footer-bg: #000000;
+    --header-footer-text: #a6d6f5;
+    --text-color: #a6d6f5;
+}
+
+/* body {
+    font-family: 'Oswald', sans-serif, 'Montserrat', sans-serif;
+    background-color: #EFF0D1;
+    color: #262730;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+} */
+
+header {
+    background-color: var(--header-footer-bg);
+    /* background-color: #77BA99; */
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--header-footer-text);
+    /* color: #EFF0D1; */
+    padding-left: 3rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    /* color: #262730; */
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease;
+    border-radius: 0.5rem;
+}
+
+nav ul li a:hover {
+    background-color: var(--button-hover-bg);
+    /* background-color: #D7C0D0; */
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 3rem;
+    padding: 20px;
+    margin: 20px;
+    width: 90%;
+}
+
+.container:first-child {
+    flex: 1;
+    max-width: 35%; /* Smaller width for the first box */
+    height: 500px;
+    background-color: var(--secondary-bg);
+    /* background: #D7C0D0; */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    font-size: large;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.container:nth-child(2) {
+    flex: 1.5; /* Larger width for the second box */
+    height: 500px;
+    background-color: var(--secondary-bg);
+    /* background: #D7C0D0; */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    font-size: large;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.container:hover {
+    transform: scale(1.05);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+input, select {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+
+input:hover, select:hover {
+    transform: scale(1.05); /* Zoom in effect */
+}
+
+button {
+    padding: 0.7rem 1.2rem;
+    background-color: var(--button-bg);
+    /* background-color: #262730; */
+    color: var(--header-footer-text);
+    /* color: #EFF0D1; */
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    color: var(--header-footer-text);
+    /* background-color: #D33F49; /* RED button */; 
+}
+.tracker h3 {
+    margin-top: 15px;
+    text-align: center;
+    display: block; /* Allows centering with margin auto */
+    font-size: 2rem;
+}
+
+.tracker table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tracker table th, .tracker table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.tracker table th {
+    background-color: #262730;
+    color: white;
+}
+/* Remove hover effect on timer text */
+#clock {
+    transform: none !important;
+}
+
+/* Center the Start and Stop buttons */
+.timer-buttons {
+    justify-content: center;
+}
+
+.timer-buttons {
+            display: flex;
+            gap: 10px;
+}
+
+.timer-buttons button {
+            padding: 5px 15px;
+            font-size: 14px;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--header-footer-bg);
+    /* background-color: #77BA99; */
+    width: 100%;
+    border-top: 1px solid #ccc;
+}
+
+footer p {
+    margin: 0;
+    /* color: #EFF0D1; */
+    color: var(--header-footer-text);
+}
+
+.floating-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.floating-button {
+    background-color: var(--floating-bg);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Oswald', sans-serif;
+}
+
+.floating-button:hover {
+    background-color: var(--delete-bg);
+    transform: scale(1.1);
+    transition: 0.3s;
+}
