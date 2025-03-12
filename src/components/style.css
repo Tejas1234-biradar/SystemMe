@@ -1,23 +1,49 @@
-Centering the signup container
+/* Centering the signup container */
 body {
     display: flex;
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
     min-height: 100vh; /* Full height */
     background-color: #ebe6e6; /* Dark background */
-}
+
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at 40% 80%, #14121f 20%, #0a0024 60%, #090000 100%);
+    overflow: hidden;
+  
+  
+  /* Nebula Glow Effect */
+  .blue-flame::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(111, 0, 255, 0.747) 0%, rgba(10, 15, 30, 0.1) 60%);
+    opacity: 0.3;
+    filter: blur(80px);
+    animation: blueFlame 3s infinite ease-in-out;
+  }
+} 
+  @keyframes blueFlame {
+    0% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.1); }
+    100% { opacity: 0.2; transform: scale(1); }
+  }
+  
 
 /* Signup box with Sung Jin-Woo vibes */
 .signup-container {
     background-color: rgba(20, 20, 20, 0.95);
     border-radius: 10px;
+    width: 150%;
     box-shadow: 0 0 15px rgba(0, 162, 255, 0.4);
     padding: 25px;
     max-width: 420px;
     text-align: center;
     /* border: 1px solid rgba(136, 0, 255, 0.6); */
     position: relative; /* Needed for absolute positioning of close button */
-    left:36%;
+    left:-5%;
     bottom:-31%
 }
 

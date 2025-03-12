@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom"; // React Router navigation
 import "./style.css";
+import "../App.css";
 
 export default function Signup({ onClose }) {
-  const navigate = useNavigate(); // React Router navigation hook
+  const navigate = useNavigate();
 
   const [isLogin, setIsLogin] = useState(false);
   const [email, setEmail] = useState("");
@@ -12,42 +13,45 @@ export default function Signup({ onClose }) {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async () => {
-    setError("");
-    setLoading(true);
+ const handleSubmit = async () => {
+  setError("");
+  setLoading(true);
 
-    if (!isLogin && password !== confirmPassword) {
-      setError("Passwords do not match.");
-      setLoading(false);
-      return;
+  if (!isLogin && password !== confirmPassword) {
+    setError("Passwords do not match.");
+    setLoading(false);
+    return;
+  }
+
+  const endpoint = isLogin
+    ? "http://localhost:5000/login"
+    : "http://localhost:5000/signup";
+
+  try {
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      console.log("Success:", data);
+      localStorage.setItem("token", data.token);
+      navigate("/dashboard");
+    } else {
+      console.error("Response not OK:", data);
+      setError(data.message || "Something went wrong.");
     }
+  } catch (err) {
+    console.error("Fetch error:", err); // Log fetch error details
+    setError("Server error. Try again later.");
+  } finally {
+    setLoading(false);
+  }
+};
 
-    const endpoint = isLogin
-      ? "http://localhost:5000/login"
-      : "http://localhost:5000/signup";
-
-    try {
-      const response = await fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        localStorage.setItem("token", data.token);
-        onClose(); // Close modal on success
-        navigate("/dashboard"); // Redirect to Dashboard
-      } else {
-        setError(data.message || "Something went wrong.");
-      }
-    } catch (err) {
-      setError("Server error. Try again later.");
-    } finally {
-      setLoading(false);
-    }
-  };
 
   return (
     <div className="signup-container">

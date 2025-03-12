@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+
+* {
+  font-family: 'Exo 2', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    min-height: 100vh; /* Full height */
+    background-color: #ebe6e6; /* Dark background */
+
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at 40% 80%, #14121f 20%, #0a0024 60%, #090000 100%);
+    overflow: hidden;
+  
+  
+  /* Nebula Glow Effect */
+  .blue-flame::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(111, 0, 255, 0.747) 0%, rgba(10, 15, 30, 0.1) 60%);
+    opacity: 0.3;
+    filter: blur(80px);
+    animation: blueFlame 3s infinite ease-in-out;
+  }
+} 
+
+.dashboard-container {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Nebula background layer */
+.dashboard-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.dashboard-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.2;
+}
+
+.dashboard-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Main content box */
+.dashboard-content {
+  position: relative;
+  z-index: 1;
+  width: 90%;
+  max-width: 800px;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid #3b82f6;
+  backdrop-filter: blur(5px);
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+  animation: fadeInUp 0.7s ease-out forwards;
+  transform: translateY(50px);
+  opacity: 0;
+}
+
+.dashboard-content.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Heading */
+.dashboard-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  font-family: 'Orbitron', sans-serif;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Subtitle */
+.dashboard-subtitle {
+  color: #d1d5db;
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+/* Card grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  animation: fadeIn 1s ease-out forwards;
+  opacity: 0;
+}
+
+.dashboard-grid.show {
+  opacity: 1;
+}
+
+@media (min-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Individual cards */
+.dashboard-card {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid #1d4ed8;
+  border-radius: 15px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+}
+
+.dashboard-card:hover {
+  transform: scale(1.05);
+}
+
+.dashboard-card h2 {
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-card p {
+  color: #9ca3af;
+}
+
+/* Buttons */
+.dashboard-buttons {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.dashboard-button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.enter-dungeon-btn {
+  background-color: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.8);
+}
+
+.enter-dungeon-btn:hover {
+  background-color: #1e40af;
+  transform: scale(1.05);
+}
+
+.logout-btn {
+  background-color: #dc2626;
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(220, 38, 38, 0.8);
+}
+
+.logout-btn:hover {
+  background-color: #991b1b;
+  transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
