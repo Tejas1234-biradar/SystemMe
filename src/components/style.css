@@ -1,134 +1,175 @@
-/* Centering the signup container */
-body {
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    min-height: 100vh; /* Full height */
-    background-color: #ebe6e6; /* Dark background */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@600&family=Orbitron:wght@400&display=swap');
 
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    background: radial-gradient(circle at 40% 80%, #14121f 20%, #0a0024 60%, #090000 100%);
-    overflow: hidden;
-  
-  
-  /* Nebula Glow Effect */
-  .blue-flame::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(111, 0, 255, 0.747) 0%, rgba(10, 15, 30, 0.1) 60%);
-    opacity: 0.3;
-    filter: blur(80px);
-    animation: blueFlame 3s infinite ease-in-out;
+/* Global reset and fonts */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  width: 100%;
+  font-family: 'Orbitron', sans-serif;
+  color: #00bfff; /* Neon Blue text */
+  background: radial-gradient(circle at 40% 80%, #14121f 20%, #0a0024 60%, #090000 100%);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Nebula Glow Overlay */
+body::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(111, 0, 255, 0.5) 0%, rgba(10, 15, 30, 0.1) 60%);
+  opacity: 0.3;
+  filter: blur(100px);
+  animation: blueFlame 6s infinite ease-in-out;
+  z-index: 0;
+}
+
+@keyframes blueFlame {
+  0% {
+    opacity: 0.2;
+    transform: scale(1);
   }
-} 
-  @keyframes blueFlame {
-    0% { opacity: 0.2; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(1.1); }
-    100% { opacity: 0.2; transform: scale(1); }
-  }
-  
-
-/* Signup box with Sung Jin-Woo vibes */
-.signup-container {
-    background-color: rgba(20, 20, 20, 0.95);
-    border-radius: 10px;
-    width: 150%;
-    box-shadow: 0 0 15px rgba(0, 162, 255, 0.4);
-    padding: 25px;
-    max-width: 420px;
-    text-align: center;
-    /* border: 1px solid rgba(136, 0, 255, 0.6); */
-    position: relative; /* Needed for absolute positioning of close button */
-    left:-5%;
-    bottom:-31%
-}
-
-/* Title with system glow */
-.signup-container h2 {
-    font-size: 24px;
-    color: #00a2ff;
-    text-shadow: 0 0 5px rgba(0, 162, 255, 0.7);
-    font-weight: 600;
-}
-
-/* Input fields */
-.signup-container input {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 1px solid rgba(0, 162, 255, 0.5);
-    border-radius: 6px;
-    font-size: 16px;
-    background: rgba(30, 30, 30, 0.8);
-    color: #fff;
-    transition: all 0.3s ease;
-}
-
-.signup-container input:focus {
-    border-color: #00a2ff;
-    box-shadow: 0 0 8px rgba(0, 162, 255, 0.8);
-    outline: none;
-}
-
-/* Submit button with glow */
-.submit-btn {
-    background: linear-gradient(90deg, #007bff, #00a2ff);
-    color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 17px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
-}
-
-.submit-btn:hover {
-    background: linear-gradient(90deg, #00a2ff, #007bff);
-    box-shadow: 0 0 15px rgba(0, 162, 255, 0.7);
-}
-
-/* Error message */
-.error-message {
-    color: #ff4d4d;
-    margin-top: 10px;
-    font-weight: 500;
-}
-
-/* Switch text */
-.switch-text {
-    color: #00a2ff;
-    cursor: pointer;
-    margin-top: 15px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.switch-text:hover {
-    color: #80d0ff;
-    text-shadow: 0 0 8px rgba(0, 162, 255, 0.8);
-}
-
-/* Close button */
-.close-btn {
-    background: none;
-    border: none;
-    color: #aaa;
-    font-size: 22px;
-    cursor: pointer;
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    transition: color 0.3s ease, transform 0.2s ease;
-}
-
-.close-btn:hover {
-    color: #ff4d4d;
+  50% {
+    opacity: 0.4;
     transform: scale(1.1);
+  }
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+}
+
+/* Notes Page Wrapper */
+.notes-container {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Wrapper around content */
+.notes-wrapper {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Card Styles */
+.card {
+  border-radius: 16px;
+  background-color: #1f1f1f;
+  box-shadow: 0 0 20px rgba(0, 191, 255, 0.1);
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  padding: 16px;
+  cursor: pointer;
+}
+
+.card:hover {
+  background-color: #292929;
+  box-shadow: 0 0 25px rgba(0, 191, 255, 0.2);
+  transform: translateY(-5px);
+}
+
+/* Card Content */
+.card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+}
+
+/* Folder Name */
+.folder-name {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00bfff;
+}
+
+/* Arrow Icon */
+.arrow-icon {
+  font-size: 1.5rem;
+  color: #00bfff;
+}
+
+/* Folders Grid */
+.folders-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 640px) {
+  .folders-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Notes List */
+.notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Notes Header */
+.notes-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+/* Back Button */
+.back-button {
+  background-color: transparent;
+  border: none;
+  color: #00bfff;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.back-button:hover {
+  color: #66ccff;
+}
+
+.back-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+/* Folder Title */
+.folder-title {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #00bfff;
+}
+
+/* Note Cards Container */
+.note-cards-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* Note Text */
+.note-text {
+  color: #00bfff;
+  font-size: 1.25rem;
+  font-weight: 500;
 }

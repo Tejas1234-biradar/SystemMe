@@ -26,8 +26,9 @@ export default function Dashboard() {
         <p className="dashboard-subtitle">Your stats are ready. Choose your next quest.</p>
 
         <div className={`dashboard-grid ${showContent ? 'show' : ''}`}>
-          <div className="dashboard-card">
+          <div className="dashboard-card"onClick={() => navigate('/quests')}>
             <h2>Daily Quests</h2>
+            
             <p>Track and complete your daily tasks.</p>
           </div>
 
@@ -36,8 +37,9 @@ export default function Dashboard() {
             <p>Even a hunter needs money</p>
           </div>
 
-          <div className="dashboard-card">
+          <div className="dashboard-card"  onClick={() => navigate('/notes')}>
             <h2>Notes</h2>
+           
             <p>Sharpen your Knowledge for the next raid.</p>
           </div>
 
@@ -50,7 +52,7 @@ export default function Dashboard() {
         <div className="dashboard-buttons">
           <button
             className="dashboard-button enter-dungeon-btn"
-            onClick={() => navigate('/quests')}
+            
           >
             Enter Dungeon
           </button>

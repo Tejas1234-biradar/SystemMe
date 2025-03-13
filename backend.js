@@ -109,6 +109,49 @@ app.get('/note', authMiddleware, async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 });
+app.put('/note/:id', authMiddleware, async (req, res) => {
+  const { id } = req.params;
+  const { title, content } = req.body;
+
+  try {
+    // Find the note by ID and userId to ensure ownership
+    const note = await Note.findOne({ _id: id, userId: req.user.userId });
+
+    if (!note) {
+      return res.status(404).json({ message: 'Note not found' });
+    }
+
+    // Update fields if provided
+    if (title) note.title = title;
+    if (content) note.content = content;
+
+    await note.save();
+
+    res.status(200).json({ message: 'Note updated successfully', note });
+  } catch (error) {
+    console.error('❌ Error updating note:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+app.delete('/note/:id', authMiddleware, async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    // Find the note by ID and userId to ensure ownership
+    const note = await Note.findOneAndDelete({ _id: id, userId: req.user.userId });
+
+    if (!note) {
+      return res.status(404).json({ message: 'Note not found' });
+    }
+
+    res.status(200).json({ message: 'Note deleted successfully' });
+  } catch (error) {
+    console.error('❌ Error deleting note:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+
 
 // ✅ Budget Routes
 app.post('/budget', authMiddleware, async (req, res) => {

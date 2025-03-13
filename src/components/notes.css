@@ -1,0 +1,518 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Exo+2:wght@700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Orbitron', sans-serif;
+    color: #00aaff;
+}
+
+.notes-background {
+    position: relative;
+    width: 100vw;
+    left: -10%;
+    height: 100vh;
+    overflow: hidden;
+    background: radial-gradient(circle at 40% 80%, #14121f 20%, #0a0024 60%, #090000 100%);
+}
+
+.notes-container {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.folders-grid,
+.notes-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+/* Existing CSS assumed to be above, adding only new overlay styles here */
+
+.system-overlay .glass-effect{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 3; /* above lasers and content */
+}
+
+.player-status,
+.daily-quests {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid #00aaff;
+    border-radius: 10px;
+    padding: 15px 20px;
+    width: 250px;
+    color: #00ccff;
+    box-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
+    backdrop-filter: blur(4px);
+}
+
+.system-title {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #00aaff;
+    padding-bottom: 5px;
+}
+
+.player-status p,
+.daily-quests ul li {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.highlight {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.daily-quests ul {
+    list-style: none;
+    padding: 0;
+}
+
+.daily-quests ul li {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+/* Optional Glow on Hover */
+.player-status:hover,
+.daily-quests:hover {
+    box-shadow: 0 0 20px rgba(0, 170, 255, 0.8);
+    transform: translateY(-2px);
+    transition: 0.3s ease;
+}
+.note-editor-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 80%;
+    margin: auto;
+    color: #00b4ff;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.note-editor-container h2 {
+    font-family: 'Exo 2', sans-serif;
+    color: #ffffff;
+}
+
+.note-textarea {
+    width: 100%;
+    min-height: 300px;
+    padding: 15px;
+    background: #111;
+    color: #00b4ff;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.editor-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.editor-actions button {
+    background: #00b4ff;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.editor-actions button:hover {
+    background: #0077cc;
+}
+
+.delete-btn {
+    background: #ff4444;
+}
+
+.delete-btn:hover {
+    background: #cc0000;
+}
+
+
+.card {
+    background-color: #1c1c2c;
+    border-radius: 20px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid #00aaff;
+}
+
+.card:hover {
+    background-color: #2c2c3c;
+    transform: translateY(-5px);
+}
+
+.card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #00aaff;
+}
+
+.card-content h2 {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 20px;
+    margin: 0;
+}
+
+.card-content p {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
+}
+
+.arrow {
+    font-size: 24px;
+    color: #00aaff;
+}
+
+.back-button-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.back-button {
+    background: none;
+    border: 1px solid #00aaff;
+    color: #00aaff;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.back-button:hover {
+    background-color: #1c1c2c;
+}
+
+/* ===== LASERS ===== */
+.laser {
+    position: absolute;
+    width: 2px;
+    height: 100vh;
+    background: linear-gradient(to bottom, rgba(0, 170, 255, 0.8), rgba(0, 170, 255, 0));
+    animation: flicker 1s infinite alternate;
+    z-index: 1;
+    opacity: 0.5;
+}
+
+.laser-one {
+    left: 20%;
+    animation: moveLaser1 10s linear infinite, flicker 1s infinite alternate;
+}
+
+.laser-two {
+    left: 50%;
+    animation: moveLaser2 12s linear infinite, flicker 1s infinite alternate;
+}
+
+.laser-three {
+    left: 75%;
+    animation: moveLaser3 15s linear infinite, flicker 1s infinite alternate;
+}
+
+.laser-four {
+    left: 35%;
+    animation: moveLaser4 8s linear infinite, flicker 1s infinite alternate;
+}
+
+/* Laser animations */
+@keyframes moveLaser1 {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+@keyframes moveLaser2 {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+@keyframes moveLaser3 {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+@keyframes moveLaser4 {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+@keyframes flicker {
+    0% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.5; }
+}
+.system-overlay {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 20;
+}
+
+.player-panel,
+.quests-panel {
+    padding: 16px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    min-width: 240px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.overlay-title {
+    font-size: 1.2rem;
+    color: #00ffff;
+    margin-bottom: 10px;
+}
+
+.stats p,
+.quest-list li {
+    font-size: 0.9rem;
+    margin: 4px 0;
+}
+
+.highlight {
+    color: #ffcc00;
+    font-weight: bold;
+}
+/* Container Glass Style */
+.system-overlay.glass-container {
+    background: rgba(20, 20, 40, 0.8);
+    border: 1px solid rgba(0, 136, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 24px;
+    width: 300px;
+    color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Titles */
+.system-title {
+    font-size: 1.4rem;
+    color: #00ffff;
+    margin-bottom: 12px;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+}
+
+.overlay-title {
+    font-size: 1.2rem;
+    color: #00ffff;
+    margin-bottom: 10px;
+}
+
+/* Player Status Section */
+.player-status {
+    font-size: 0.95rem;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* Highlights for Important Stats */
+.highlight {
+    color: #ffcc00;
+    font-weight: bold;
+}
+
+/* Daily Quests Section */
+.daily-quests {
+    font-size: 0.95rem;
+}
+
+/* Quest List Styles */
+.quest-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.quest-list li {
+    font-size: 0.9rem;
+}
+
+/* Completed/Pending Quest Colors */
+.quest-completed {
+    color: #00ff00;
+}
+
+.quest-pending {
+    color: #ff3333;
+}
+
+/* Optional universal Glass Effect */
+.glass-effect {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+}
+
+.quest-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.quest-completed {
+    color: #00ff00;
+}
+
+.quest-pending {
+    color: #ff3333;
+}
+
+/* Optional Glass Effect */
+.glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+}
+/* Modal Overlay */
+.note-editor-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.75); /* semi-transparent black */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* on top of everything */
+}
+
+/* Modal Content Box */
+.note-editor-content {
+    background: rgba(20, 20, 40, 0.95); /* dark glass effect */
+    border: 1px solid rgba(0, 136, 255, 0.3); /* soft blue border */
+    box-shadow: 0 0 20px rgba(0, 136, 255, 0.4);
+    border-radius: 16px;
+    padding: 24px;
+    width: 90%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Textarea */
+.note-editor-textarea {
+    width: 100%;
+    height: 300px;
+    background-color: rgba(10, 10, 20, 0.8);
+    color: #f0f0f0;
+    border: 1px solid rgba(0, 136, 255, 0.3);
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 1rem;
+    resize: none;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.note-editor-textarea:focus {
+    border-color: #0088ff;
+    box-shadow: 0 0 8px rgba(0, 136, 255, 0.5);
+}
+
+/* Buttons Container */
+.note-editor-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+/* Base button style */
+.note-editor-buttons button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Save Button */
+.save-button {
+    background-color: #0088ff;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 136, 255, 0.5);
+}
+
+.save-button:hover {
+    background-color: #00aaff;
+    box-shadow: 0 0 15px rgba(0, 136, 255, 0.8);
+}
+
+/* Cancel Button */
+.cancel-button {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #cccccc;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cancel-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+/* Optional smooth pop-up animation */
+.note-editor-content {
+    animation: popupFadeIn 0.3s ease;
+}
+
+@keyframes popupFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+

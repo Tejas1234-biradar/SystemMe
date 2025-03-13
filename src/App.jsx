@@ -4,6 +4,7 @@ import Home from "./components/Home";
 import Signup from "./components/Signup";
 import Dashboard from "./components/Dashboard";
 import NProgress from "nprogress";
+import Notes from "./components/notes";
 import Quest from "./components/quest";
 import "nprogress/nprogress.css"; // Default CSS
 // import "./nprogress.css"; // Your custom styles
@@ -32,6 +33,7 @@ const App = () => {
       <Route path="/signup" element={<Signup />} />
       <Route path="/dashboard" element={<Dashboard />} />      
       <Route path="/quests" element={<Quest />} />      
+      <Route path="/notes" element={<Notes />} />      
       {/* More routes */}
     </Routes>
   );
